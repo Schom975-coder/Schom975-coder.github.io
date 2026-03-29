@@ -1144,18 +1144,7 @@ ul { list-style: none; }
 .cert-badge.aws  { background: rgba(255,153,0,0.1);   border-color: rgba(255,153,0,0.25); }
 .cert-badge.k8s  { background: rgba(50,108,229,0.1);  border-color: rgba(50,108,229,0.25); }
 .cert-badge.snow { background: rgba(10,170,130,0.1);  border-color: rgba(10,170,130,0.25); }
-.cert-badge.tf   { background: rgba(126,74,227,0.12); border-color: rgba(126,74,227,0.3); }
-
-.cert-status.cert-new {
-  background: rgba(126,74,227,0.12);
-  border-color: rgba(126,74,227,0.35);
-  color: #b084f5;
-  animation: cert-new-glow 2.5s ease-in-out infinite;
-}
-@keyframes cert-new-glow {
-  0%,100% { box-shadow: 0 0 6px rgba(126,74,227,0.2); }
-  50%     { box-shadow: 0 0 14px rgba(126,74,227,0.45); }
-}
+.cert-badge.tf   { background: rgba(126,74,227,0.1); border-color: rgba(126,74,227,0.25); }
 
 .cert-info { flex: 1; }
 .cert-name {
