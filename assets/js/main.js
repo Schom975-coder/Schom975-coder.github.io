@@ -194,7 +194,7 @@ async function runTerminal() {
   await blank();
 
   await typeCmd('uptime');
-  await out('7+ years in Platform Engineering & DevOps', 'out-cyan');
+  await out('7+ years in Site Reliability Engineering & DevOps', 'out-cyan');
   await blank();
 
   await typeCmd('ls ~/certifications/');
