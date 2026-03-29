@@ -4,496 +4,923 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ── SEO ──────────────────────────────────────────── -->
-  <!-- TODO: Update description and og:image once site is live -->
-  <title>Scott Hom — Software Engineer</title>
-  <meta name="description" content="Scott Hom — Software Engineer. Portfolio showcasing projects, skills, and experience." />
+  <!-- ── SEO ──────────────────────────────────────────────── -->
+  <title>Scott Hom — DevOps Engineer II</title>
+  <meta name="description" content="Scott Hom — DevOps Engineer II at Disney Streaming. Platform engineering, Kubernetes, CI/CD automation, and cloud infrastructure." />
   <meta name="author" content="Scott Hom" />
 
-  <!-- Open Graph / social preview -->
+  <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://schom975-coder.github.io/" />
-  <meta property="og:title"       content="Scott Hom — Software Engineer" />
-  <meta property="og:description" content="Software Engineer building fast, accessible, and delightful digital experiences." />
-  <!-- TODO: Add a real preview image at assets/images/og-preview.png -->
+  <meta property="og:title"       content="Scott Hom — DevOps Engineer II" />
+  <meta property="og:description" content="Platform engineering, Kubernetes, CI/CD, and cloud infrastructure at Disney Streaming." />
   <!-- <meta property="og:image" content="https://schom975-coder.github.io/assets/images/og-preview.png" /> -->
 
-  <!-- Twitter card -->
+  <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Scott Hom — Software Engineer" />
-  <meta name="twitter:description" content="Software Engineer building fast, accessible, and delightful digital experiences." />
+  <meta name="twitter:title"       content="Scott Hom — DevOps Engineer II" />
+  <meta name="twitter:description" content="Platform engineering & DevOps @ Disney Streaming." />
 
-  <!-- ── Fonts ─────────────────────────────────────────── -->
+  <!-- ── Fonts ─────────────────────────────────────────────── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- ── Styles ────────────────────────────────────────── -->
+  <!-- ── Styles ────────────────────────────────────────────── -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
 
-  <!-- ============================================================
-       NAV
-       ============================================================ -->
-  <nav id="nav" role="navigation" aria-label="Main navigation">
-    <a href="#hero" class="nav-logo">scott<span>.</span>hom</a>
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
 
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Logo: terminal prompt style -->
+  <a href="#hero" class="nav-logo" aria-label="Scott Hom home">
+    <span class="prompt">$</span>&nbsp;
+    <span class="name">schom</span>
+    <span class="cursor">▊</span>
+  </a>
 
-    <a href="#contact" class="btn btn-primary" style="margin-left: 24px;">Get in Touch</a>
+  <ul class="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 
-    <!-- Mobile hamburger -->
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-primary" style="margin-left:20px">
+    Resume&nbsp;↗
+  </a>
 
-  <!-- Mobile nav drawer -->
-  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#contact">Contact</a>
+  <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+</div>
 
 
-  <!-- ============================================================
-       HERO
-       ============================================================ -->
-  <section id="hero">
-    <div class="container hero-inner">
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
 
-      <!-- Status badge — TODO: update text to match your situation -->
-      <div class="hero-badge reveal">Open to new opportunities</div>
+  <!-- Particle canvas (JS draws here) -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <div class="container hero-inner">
+
+    <!-- ── Left: text ── -->
+    <div class="hero-text">
+
+      <!-- Status badge -->
+      <div class="hero-badge anim-up ad-0">
+        Open to new opportunities
+      </div>
 
       <!-- Name -->
-      <h1 class="hero-name reveal delay-1">
-        Hi, I'm<br>
-        <span class="blue">Scott Hom</span>
+      <h1 class="hero-name anim-up ad-1">
+        Scott<br><span class="accent">Hom</span>
       </h1>
 
-      <!-- Role — TODO: Replace "Software Engineer" with your actual title -->
-      <p class="hero-title reveal delay-2">
-        <span class="role">Software Engineer</span>
-        &nbsp;— building things for the web
+      <!-- Role -->
+      <p class="hero-title anim-up ad-2">
+        <span>DevOps Engineer II</span>
+        <span class="sep">&nbsp;·&nbsp;</span>
+        <span class="company">Disney Streaming</span>
+        <span class="sep">&nbsp;·&nbsp;</span>
+        <span style="color:var(--text-3)">Jersey City, NJ</span>
       </p>
 
-      <!-- Tagline — TODO: Replace with your own one-liner -->
-      <p class="hero-bio reveal delay-3">
-        I design and build fast, accessible, and delightful digital experiences.
-        Passionate about clean architecture, developer tooling, and shipping things that matter.
+      <!-- One-liner bio -->
+      <p class="hero-bio anim-up ad-3">
+        Building resilient, scalable infrastructure for streaming at global scale.
+        7+ years in platform engineering, CI/CD automation, Kubernetes, and cloud IaC.
+        Currently pursuing an M.Sc. in Technology Leadership at Brown University.
       </p>
 
       <!-- CTAs -->
-      <div class="hero-cta reveal delay-4">
+      <div class="hero-cta anim-up ad-4">
         <a href="#projects" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
           </svg>
           View My Work
         </a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Resume ↗</a>
       </div>
 
+    </div><!-- /hero-text -->
+
+    <!-- ── Right: terminal ── -->
+    <div class="hero-terminal anim-up ad-2">
+      <div class="terminal-window">
+        <div class="term-titlebar">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="term-tab">bash</span>
+          <span class="term-win-label">scott-hom — 80×24</span>
+        </div>
+        <!-- JS fills this with the typewriter animation -->
+        <div class="term-body" id="terminal-body" aria-live="polite" aria-label="Terminal session"></div>
+      </div>
     </div>
 
-    <!-- Scroll nudge -->
-    <div class="hero-scroll" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-      </svg>
-    </div>
-  </section>
+  </div><!-- /hero-inner -->
+
+  <!-- Scroll nudge -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+    </svg>
+    scroll
+  </div>
+
+</section><!-- /hero -->
 
 
-  <!-- ============================================================
-       ABOUT
-       ============================================================ -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="about-grid">
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
 
-        <!-- Photo placeholder -->
-        <!-- TODO: Replace this div with:
-             <div class="about-photo">
-               <img src="assets/images/profile.jpg" alt="Scott Hom" />
-             </div>
+      <!-- Photo (replace the placeholder div with <img> when ready) -->
+      <div class="about-photo reveal">
+        <!-- ↓↓ SWAP THIS FOR YOUR PHOTO ↓↓
+             <img src="assets/images/profile.jpg" alt="Scott Hom" />
         -->
-        <div class="about-photo reveal">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          <span>Your photo here</span>
+        <div class="photo-placeholder-inner">
+          <div class="photo-monogram">SH</div>
+          <div class="photo-hint">// photo coming soon</div>
         </div>
-
-        <!-- Bio -->
-        <div class="about-text">
-          <p class="section-label reveal">About Me</p>
-          <h2 class="section-title reveal delay-1">A bit about <span>who I am</span></h2>
-
-          <!-- TODO: Replace paragraphs with your real bio -->
-          <p class="reveal delay-2">
-            I'm a software engineer based in [City, Country] with a passion for
-            building products that sit at the intersection of clean code and
-            great user experience. I thrive in fast-moving environments where
-            I can own problems end-to-end.
-          </p>
-          <p class="reveal delay-2">
-            When I'm not shipping code, you'll find me [your hobbies / interests].
-            I believe great software starts with empathy for the people using it.
-          </p>
-          <p class="reveal delay-3">
-            Currently [open to opportunities / building X at Company Y].
-            I'm especially interested in [areas of interest].
-          </p>
-
-          <!-- Stats — TODO: update numbers -->
-          <div class="about-stats reveal delay-4">
-            <div class="stat-item">
-              <div class="stat-number">5<span>+</span></div>
-              <div class="stat-label">Years exp.</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">20<span>+</span></div>
-              <div class="stat-label">Projects shipped</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">10<span>+</span></div>
-              <div class="stat-label">Happy clients</div>
-            </div>
-          </div>
-        </div>
-
+        <!-- Corner accent (bottom-right) -->
+        <div class="photo-corner-br"></div>
       </div>
-    </div>
-  </section>
 
+      <!-- Bio -->
+      <div class="about-text">
+        <span class="section-label reveal">whoami</span>
+        <h2 class="section-title reveal delay-1">
+          About <span>Scott Hom</span>
+        </h2>
+        <div class="section-divider reveal delay-1"></div>
 
-  <!-- ============================================================
-       SKILLS
-       ============================================================ -->
-  <section id="skills" class="section">
-    <div class="container">
-
-      <div class="section-header">
-        <p class="section-label reveal">What I work with</p>
-        <h2 class="section-title reveal delay-1">Skills &amp; <span>Toolbox</span></h2>
-        <p class="section-subtitle reveal delay-2">
-          <!-- TODO: Update description -->
-          A snapshot of the languages, frameworks, and tools I use to build things.
+        <p class="reveal delay-2">
+          I'm a <strong>DevOps Engineer II at Disney Streaming</strong>, based in Jersey City, NJ,
+          where I build and maintain the infrastructure that keeps streaming services online for
+          millions of viewers around the clock. My work spans Kubernetes deployment pipelines,
+          parallel CI/CD systems, Docker containerisation, and cloud infrastructure automation.
         </p>
+        <p class="reveal delay-2">
+          Before Disney, I spent three years at <strong>BGC Partners</strong> engineering the
+          deployment infrastructure for the ForexMatch financial trading platform — a zero-downtime
+          environment with exacting reliability standards. Earlier in my career I interned at
+          <strong>Deloitte Consulting</strong> and <strong>Maryville Consulting (Accenture)</strong>,
+          gaining early exposure to enterprise software delivery.
+        </p>
+        <p class="reveal delay-3">
+          I hold a <strong>B.S. in Computer Science from Washington University in St. Louis</strong>
+          (Magna Cum Laude, 3.84 GPA) and am currently completing an
+          <strong>M.Sc. in Technology Leadership at Brown University</strong> (Class of 2026).
+          I'm also a certified <strong>AWS Solutions Architect</strong> and
+          <strong>Kubernetes Administrator (CKA)</strong>.
+        </p>
+
+        <!-- Quick stats (JS animates the numbers) -->
+        <div class="about-stats reveal delay-4">
+          <div class="stat-item">
+            <div class="stat-num"><span data-count="7">0</span><sup>+</sup></div>
+            <div class="stat-lbl">Yrs Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num"><span data-count="2">0</span></div>
+            <div class="stat-lbl">Cloud Certs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num"><span data-count="15">0</span><sup>+</sup></div>
+            <div class="stat-lbl">Tools Mastered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num"><span data-count="4">0</span></div>
+            <div class="stat-lbl">Major Employers</div>
+          </div>
+        </div>
       </div>
 
-      <div class="skills-grid">
+    </div>
+  </div>
+</section>
 
-        <!-- TODO: Edit icon, title, and tags for each card -->
 
-        <div class="skill-card reveal">
-          <div class="skill-card-icon" aria-hidden="true">⚡</div>
-          <div class="skill-card-title">Frontend</div>
-          <div class="skill-tags">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Tailwind</span>
-          </div>
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">cat stack.yaml</span>
+      <h2 class="section-title reveal delay-1">Skills &amp; <span>Tech Stack</span></h2>
+      <p class="section-subtitle reveal delay-2">
+        The languages, platforms, and tools I use daily to build, automate, and ship.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+
+      <!-- CI/CD & Automation -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="skill-card-title">cicd_automation.sh</span>
+          <span class="skill-card-icon-sm">⚙️</span>
         </div>
-
-        <div class="skill-card reveal delay-1">
-          <div class="skill-card-icon" aria-hidden="true">🔧</div>
-          <div class="skill-card-title">Backend</div>
-          <div class="skill-tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">Python</span>
-            <span class="tag">REST APIs</span>
-            <span class="tag">GraphQL</span>
-            <span class="tag">PostgreSQL</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal delay-2">
-          <div class="skill-card-icon" aria-hidden="true">☁️</div>
-          <div class="skill-card-title">Infrastructure &amp; DevOps</div>
-          <div class="skill-tags">
-            <span class="tag">AWS</span>
-            <span class="tag">Docker</span>
-            <span class="tag">CI/CD</span>
+        <div class="skill-card-body">
+          <div class="skill-card-name"><span class="icon">⚙️</span> CI/CD &amp; Automation</div>
+          <div class="skill-tags-wrap">
+            <span class="tag">Jenkins</span>
             <span class="tag">GitHub Actions</span>
-            <span class="tag">Linux</span>
+            <span class="tag">GitLab CI/CD</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">AWX</span>
+            <span class="tag">Maven</span>
+            <span class="tag">Artifactory</span>
           </div>
         </div>
-
-        <div class="skill-card reveal delay-3">
-          <div class="skill-card-icon" aria-hidden="true">🛠️</div>
-          <div class="skill-card-title">Tools &amp; Workflow</div>
-          <div class="skill-tags">
-            <span class="tag">Git</span>
-            <span class="tag">VS Code</span>
-            <span class="tag">Figma</span>
-            <span class="tag">Notion</span>
-            <span class="tag">Jira</span>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Containers & Orchestration -->
+      <div class="skill-card reveal delay-1">
+        <div class="skill-card-header">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="skill-card-title">containers.yaml</span>
+          <span class="skill-card-icon-sm">🐳</span>
+        </div>
+        <div class="skill-card-body">
+          <div class="skill-card-name"><span class="icon">🐳</span> Containers &amp; Orchestration</div>
+          <div class="skill-tags-wrap">
+            <span class="tag">Kubernetes (CKA)</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Docker Compose</span>
+            <span class="tag">Multi-arch Builds</span>
+            <span class="tag">Multistage Builds</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cloud & IaC -->
+      <div class="skill-card reveal delay-2">
+        <div class="skill-card-header">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="skill-card-title">cloud_iac.tf</span>
+          <span class="skill-card-icon-sm">☁️</span>
+        </div>
+        <div class="skill-card-body">
+          <div class="skill-card-name"><span class="icon">☁️</span> Cloud &amp; Infrastructure as Code</div>
+          <div class="skill-tags-wrap">
+            <span class="tag">AWS (SA Certified)</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Vault</span>
+            <span class="tag">IaC</span>
+            <span class="tag">Cost Optimisation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="skill-card reveal delay-1">
+        <div class="skill-card-header">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="skill-card-title">languages.py</span>
+          <span class="skill-card-icon-sm">💻</span>
+        </div>
+        <div class="skill-card-body">
+          <div class="skill-card-name"><span class="icon">💻</span> Languages</div>
+          <div class="skill-tags-wrap">
+            <span class="tag">Python</span>
+            <span class="tag">Groovy</span>
+            <span class="tag">Shell / Bash</span>
+            <span class="tag">YAML</span>
+            <span class="tag">Rust</span>
+            <span class="tag">Java</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monitoring & SRE -->
+      <div class="skill-card reveal delay-2">
+        <div class="skill-card-header">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="skill-card-title">sre_monitoring.conf</span>
+          <span class="skill-card-icon-sm">📊</span>
+        </div>
+        <div class="skill-card-body">
+          <div class="skill-card-name"><span class="icon">📊</span> Monitoring &amp; SRE</div>
+          <div class="skill-tags-wrap">
+            <span class="tag">Nagios</span>
+            <span class="tag">Observability</span>
+            <span class="tag">Alerting</span>
+            <span class="tag">Incident Response</span>
+            <span class="tag">SRE Practices</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security & Quality -->
+      <div class="skill-card reveal delay-3">
+        <div class="skill-card-header">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+          <span class="skill-card-title">security_scan.sh</span>
+          <span class="skill-card-icon-sm">🔒</span>
+        </div>
+        <div class="skill-card-body">
+          <div class="skill-card-name"><span class="icon">🔒</span> Security &amp; Quality</div>
+          <div class="skill-tags-wrap">
+            <span class="tag">SonarQube</span>
+            <span class="tag">Fortify</span>
+            <span class="tag">Vault</span>
+            <span class="tag">Vulnerability Scanning</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Cucumber</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /skills-grid -->
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section id="experience" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">git log --oneline</span>
+      <h2 class="section-title reveal delay-1">Work <span>Experience</span></h2>
     </div>
-  </section>
 
+    <div class="timeline">
 
-  <!-- ============================================================
-       EXPERIENCE
-       ============================================================ -->
-  <section id="experience" class="section">
-    <div class="container">
-
-      <div class="section-header">
-        <p class="section-label reveal">Where I've been</p>
-        <h2 class="section-title reveal delay-1">Work <span>Experience</span></h2>
+      <!-- ── Disney Streaming ──────────────────────────────── -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">DevOps Engineer II</div>
+              <div class="timeline-company">Disney Streaming &nbsp;·&nbsp; New York, NY</div>
+            </div>
+            <span class="timeline-date">2022 — Present</span>
+          </div>
+          <ul class="timeline-body">
+            <li>Developed Jenkins CI/CD pipelines leveraging aggressively parallel build paradigms to significantly reduce build times across multiple client application teams.</li>
+            <li>Crafted lean custom Docker images with multistage, cross-architecture builds — reducing image sizes and streamlining the developer inner loop.</li>
+            <li>Served as the primary DevOps contact for client application teams; created tailored Ansible deployment and configuration-management scripts to optimise provisioning and monitoring.</li>
+            <li>Drove infrastructure-as-code (IaC) adoption across the platform using Terraform, enabling automated cloud provisioning and effective cost optimisation through smarter resource allocation.</li>
+            <li>Designed resilient Kubernetes deployment pipelines with full monitoring and alerting; improved system reliability through proactive observability and incident-readiness practices (SRE).</li>
+          </ul>
+          <div class="timeline-tools">
+            <span class="tag">Jenkins</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">AWX</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Vault</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Python</span>
+            <span class="tag">Groovy</span>
+            <span class="tag">Rust</span>
+          </div>
+        </div>
       </div>
 
-      <div class="timeline">
-
-        <!-- TODO: Replace each timeline-item with your real experience -->
-
-        <div class="timeline-item reveal">
-          <div class="timeline-card">
-            <div class="timeline-meta">
-              <span class="timeline-date">Jan 2023 — Present</span>
-              <span class="tag">Full-time</span>
+      <!-- ── BGC Partners ──────────────────────────────────── -->
+      <div class="timeline-item reveal delay-1">
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Development Operations Engineer (DevOps)</div>
+              <div class="timeline-company">BGC Partners &nbsp;·&nbsp; New York, NY</div>
             </div>
-            <div class="timeline-role">Senior Software Engineer</div>
-            <div class="timeline-company">Company Name · City, Country</div>
-            <ul class="timeline-desc">
-              <li>Led development of [feature / product], improving [metric] by X%.</li>
-              <li>Architected and shipped [system or service] used by [N] users / teams.</li>
-              <li>Mentored [N] junior engineers; established code review standards.</li>
-            </ul>
+            <span class="timeline-date">2019 — 2022</span>
+          </div>
+          <ul class="timeline-body">
+            <li>Wrote production, QA, and staging Ansible deployment scripts for all modules of the ForexMatch financial trading system — a zero-downtime, high-availability platform.</li>
+            <li>Implemented and managed GitLab and Jenkins CI/CD pipelines incorporating build, test, deployment, and code quality/vulnerability scanning (SonarQube, Fortify) to ensure seamless software delivery.</li>
+            <li>Led migration of multiple QA, staging, and production environments from physical to virtual servers, with configuration fully managed autonomously by Ansible.</li>
+            <li>Expanded automated regression and smoke-test coverage using Cucumber and Selenium across multiple engineering teams.</li>
+          </ul>
+          <div class="timeline-tools">
+            <span class="tag">Jenkins</span>
+            <span class="tag">GitLab CI</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">Docker</span>
+            <span class="tag">SonarQube</span>
+            <span class="tag">Fortify</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Cucumber</span>
+            <span class="tag">Nagios</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
           </div>
         </div>
-
-        <div class="timeline-item reveal delay-1">
-          <div class="timeline-card">
-            <div class="timeline-meta">
-              <span class="timeline-date">Jun 2021 — Dec 2022</span>
-              <span class="tag">Full-time</span>
-            </div>
-            <div class="timeline-role">Software Engineer</div>
-            <div class="timeline-company">Previous Company · City, Country</div>
-            <ul class="timeline-desc">
-              <li>Built and maintained [product / feature] with [technology stack].</li>
-              <li>Reduced page load time by X% through [optimization technique].</li>
-              <li>Collaborated with design and product teams to ship [N] major releases.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal delay-2">
-          <div class="timeline-card">
-            <div class="timeline-meta">
-              <span class="timeline-date">Summer 2020</span>
-              <span class="tag">Internship</span>
-            </div>
-            <div class="timeline-role">Software Engineering Intern</div>
-            <div class="timeline-company">Internship Company · City, Country</div>
-            <ul class="timeline-desc">
-              <li>Developed [feature] as part of [team name].</li>
-              <li>Wrote unit and integration tests achieving X% code coverage.</li>
-            </ul>
-          </div>
-        </div>
-
       </div>
+
+      <!-- ── Maryville / Accenture ─────────────────────────── -->
+      <div class="timeline-item reveal delay-2">
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Summer IT Associate</div>
+              <div class="timeline-company">Maryville Consulting Group · Part of Accenture &nbsp;·&nbsp; St. Louis, MO</div>
+            </div>
+            <span class="timeline-date">Summer 2018</span>
+          </div>
+          <ul class="timeline-body">
+            <li>Assigned to clients including Panera Bread, Emerson Electric, and WellMed Medical Management — contributed to the implementation of ServiceNow IT field service and case management processes for Panera Bread.</li>
+            <li>Earned both ServiceNow System Administrator Certification and ServiceNow Implementation Specialist certification during the engagement.</li>
+          </ul>
+          <div class="timeline-tools">
+            <span class="tag">ServiceNow</span>
+            <span class="tag">IT Service Management</span>
+            <span class="tag">Case Management</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Deloitte ───────────────────────────────────────── -->
+      <div class="timeline-item reveal delay-3">
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Summer Intern</div>
+              <div class="timeline-company">Deloitte Consulting LLP &nbsp;·&nbsp; Boston, MA</div>
+            </div>
+            <span class="timeline-date">Summer 2017</span>
+          </div>
+          <ul class="timeline-body">
+            <li>Assigned to the Rhode Island Unified Health Infrastructure Project (RIUHIP) — ensured quality and compliance on medical cases while monitoring and logging daily CCAP and medical case backlog burn-down.</li>
+            <li>Served as the primary liaison for contracted state employees at Business Focus, Inc., and updated the daily progress report for Deloitte senior staff and the Rhode Island Governor's office.</li>
+          </ul>
+          <div class="timeline-tools">
+            <span class="tag">Healthcare IT</span>
+            <span class="tag">Compliance</span>
+            <span class="tag">Stakeholder Management</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROJECTS — Work Highlights with Architecture Diagrams
+     ============================================================ -->
+<section id="projects" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">ls ~/projects/</span>
+      <h2 class="section-title reveal delay-1">Work <span>Highlights</span></h2>
+      <p class="section-subtitle reveal delay-2">
+        Key engineering initiatives from Disney Streaming and BGC Partners —
+        real problems, real scale, real impact.
+      </p>
     </div>
-  </section>
+
+    <div class="projects-grid">
+
+      <!-- ── Project 1: Disney K8s CI/CD Platform ── (full width) -->
+      <div class="project-card full-width reveal">
+
+        <!-- Architecture diagram -->
+        <div class="project-diagram">
+          <div class="pipeline">
+            <div class="pipe-step">
+              <div class="pipe-icon">📝</div>
+              <div class="pipe-label">Code<br>Push</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">⚙️</div>
+              <div class="pipe-label">Jenkins<br>Parallel</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">🐳</div>
+              <div class="pipe-label">Docker<br>Multi-arch</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">📦</div>
+              <div class="pipe-label">Artifactory<br>Registry</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">☸️</div>
+              <div class="pipe-label">Kubernetes<br>Deploy</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">🔧</div>
+              <div class="pipe-label">Ansible<br>AWX</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">📊</div>
+              <div class="pipe-label">Monitor<br>&amp; Alert</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-company">Disney Streaming · 2022 – Present</div>
+          <div class="project-title">Kubernetes CI/CD &amp; Deployment Platform</div>
+          <p class="project-desc">
+            Designed and implemented a fleet of Jenkins CI/CD pipelines using aggressively parallel
+            build strategies, cutting build times significantly across multiple application teams.
+            Paired with lean multistage Docker images built for multiple CPU architectures, the platform
+            supports high-velocity, zero-downtime deployments into production Kubernetes clusters.
+            Full observability layer with monitoring, alerting, and incident-readiness practices embedded
+            throughout the pipeline.
+          </p>
+          <div class="project-footer">
+            <div class="project-stack">
+              <span class="tag">Jenkins</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Ansible</span>
+              <span class="tag">AWX</span>
+              <span class="tag">Artifactory</span>
+              <span class="tag">Groovy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 2: IaC & Cloud Cost Optimisation ── -->
+      <div class="project-card reveal delay-1">
+
+        <div class="project-diagram">
+          <div class="pipeline">
+            <div class="pipe-step">
+              <div class="pipe-icon">🔐</div>
+              <div class="pipe-label">Vault<br>Secrets</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">🏗️</div>
+              <div class="pipe-label">Terraform<br>Plan</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">☁️</div>
+              <div class="pipe-label">AWS<br>Provision</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">💰</div>
+              <div class="pipe-label">Cost<br>Optimise</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-company">Disney Streaming · 2022 – Present</div>
+          <div class="project-title">Infrastructure as Code &amp; Cloud Cost Platform</div>
+          <p class="project-desc">
+            Led IaC adoption using Terraform and Ansible to fully automate cloud infrastructure
+            provisioning on AWS. Integrated Vault for secrets management and built tooling to
+            right-size resources — actively reducing cloud spend by avoiding unnecessary provisioning
+            and optimising allocation across environments.
+          </p>
+          <div class="project-footer">
+            <div class="project-stack">
+              <span class="tag">Terraform</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Vault</span>
+              <span class="tag">Ansible</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 3: BGC ForexMatch DevOps ── -->
+      <div class="project-card reveal delay-2">
+
+        <div class="project-diagram">
+          <div class="pipeline">
+            <div class="pipe-step">
+              <div class="pipe-icon">🦊</div>
+              <div class="pipe-label">GitLab<br>Source</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">🔍</div>
+              <div class="pipe-label">Build +<br>Scan</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">🤖</div>
+              <div class="pipe-label">Ansible<br>Config</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step">
+              <div class="pipe-icon">🏭</div>
+              <div class="pipe-label">Dev→QA<br>→Prod</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-company">BGC Partners · 2019 – 2022</div>
+          <div class="project-title">ForexMatch Trading System DevOps Platform</div>
+          <p class="project-desc">
+            Built end-to-end CI/CD infrastructure for BGC's ForexMatch electronic trading platform
+            across Dev, QA, Staging, and Production environments. Ansible-managed configuration
+            replaced all manual provisioning; GitLab CI pipelines enforced code quality gates
+            (SonarQube, Fortify) and automated regression tests (Cucumber, Selenium) at every merge.
+            Delivered full physical-to-virtual migration with zero-downtime cutover.
+          </p>
+          <div class="project-footer">
+            <div class="project-stack">
+              <span class="tag">GitLab CI</span>
+              <span class="tag">Ansible</span>
+              <span class="tag">Jenkins</span>
+              <span class="tag">SonarQube</span>
+              <span class="tag">Fortify</span>
+              <span class="tag">Selenium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
+  </div>
+</section>
 
 
-  <!-- ============================================================
-       PROJECTS
-       ============================================================ -->
-  <section id="projects" class="section">
-    <div class="container">
+<!-- ============================================================
+     CERTIFICATIONS
+     ============================================================ -->
+<section id="certifications" class="section">
+  <div class="container">
 
-      <div class="section-header">
-        <p class="section-label reveal">What I've built</p>
-        <h2 class="section-title reveal delay-1">Featured <span>Projects</span></h2>
+    <div class="section-header">
+      <span class="section-label reveal">ls ~/certifications/</span>
+      <h2 class="section-title reveal delay-1"><span>Certifications</span> &amp; Credentials</h2>
+    </div>
+
+    <div class="certs-grid">
+
+      <!-- AWS SA -->
+      <div class="cert-card reveal">
+        <div class="cert-badge aws">☁️</div>
+        <div class="cert-info">
+          <div class="cert-name">AWS Certified Solutions Architect — Associate</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+          <span class="cert-status">Active</span>
+        </div>
+      </div>
+
+      <!-- CKA -->
+      <div class="cert-card reveal delay-1">
+        <div class="cert-badge k8s">☸️</div>
+        <div class="cert-info">
+          <div class="cert-name">Certified Kubernetes Administrator (CKA)</div>
+          <div class="cert-issuer">Cloud Native Computing Foundation (CNCF)</div>
+          <span class="cert-status">Active</span>
+        </div>
+      </div>
+
+      <!-- ServiceNow SA -->
+      <div class="cert-card reveal delay-2">
+        <div class="cert-badge snow">🔧</div>
+        <div class="cert-info">
+          <div class="cert-name">ServiceNow Certified System Administrator</div>
+          <div class="cert-issuer">ServiceNow</div>
+          <span class="cert-status">Earned 2018</span>
+        </div>
+      </div>
+
+      <!-- ServiceNow IS -->
+      <div class="cert-card reveal delay-3">
+        <div class="cert-badge snow">⚡</div>
+        <div class="cert-info">
+          <div class="cert-name">ServiceNow Implementation Specialist</div>
+          <div class="cert-issuer">ServiceNow</div>
+          <span class="cert-status">Earned 2018</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EDUCATION
+     ============================================================ -->
+<section id="education" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">cat education.md</span>
+      <h2 class="section-title reveal delay-1">Education &amp; <span>Background</span></h2>
+    </div>
+
+    <div class="edu-grid">
+
+      <!-- Brown -->
+      <div class="edu-card reveal">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">M.Sc. Technology Leadership</div>
+        <div class="edu-school">Brown University</div>
+        <div class="edu-detail">School of Professional Studies</div>
+        <div class="edu-year">Class of 2026</div>
+        <div class="edu-honors">
+          <span class="tag tag-green">In Progress</span>
+        </div>
+      </div>
+
+      <!-- WashU -->
+      <div class="edu-card reveal delay-1">
+        <div class="edu-icon">🏛️</div>
+        <div class="edu-degree">B.S. Computer Science</div>
+        <div class="edu-school">Washington University in St. Louis</div>
+        <div class="edu-detail">College of Engineering &amp; Applied Sciences</div>
+        <div class="edu-detail">GPA: 3.84 / 4.00 &nbsp;·&nbsp; Magna Cum Laude &nbsp;·&nbsp; Dean's List 2016–2019</div>
+        <div class="edu-detail">Study Abroad: King's College London</div>
+        <div class="edu-year">Class of 2019</div>
+        <div class="edu-honors">
+          <span class="tag">Magna Cum Laude</span>
+          <span class="tag">Tau Beta Pi</span>
+        </div>
+      </div>
+
+      <!-- Cornell -->
+      <div class="edu-card reveal delay-2">
+        <div class="edu-icon">🔴</div>
+        <div class="edu-degree">B.S. Computer Science (transferred)</div>
+        <div class="edu-school">Cornell University</div>
+        <div class="edu-detail">College of Arts &amp; Sciences</div>
+        <div class="edu-detail">GPA: 3.8 / 4.0 &nbsp;·&nbsp; SAT: 2270 &nbsp;·&nbsp; ACT: 35</div>
+        <div class="edu-detail">Men's Club Lacrosse — MCLA All League 2017</div>
+        <div class="edu-year">2015 – 2016</div>
+        <div class="edu-honors">
+          <span class="tag">MCLA All League</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="section">
+  <div class="container">
+
+    <div class="contact-layout">
+
+      <!-- Left: copy + links -->
+      <div class="contact-left">
+        <span class="section-label reveal">ping scottwhom@gmail.com</span>
+        <h2 class="section-title reveal delay-1">Let's <span>Connect</span></h2>
         <p class="section-subtitle reveal delay-2">
-          <!-- TODO: Update -->
-          A selection of side projects, open-source work, and professional highlights.
-        </p>
-      </div>
-
-      <div class="projects-grid">
-
-        <!-- Featured project (spans 2 cols on desktop) -->
-        <!-- TODO: Replace # links, update title/desc/stack, and swap screenshot -->
-        <div class="project-card featured reveal">
-          <div class="project-img">
-            <!-- TODO: Replace with: <img src="assets/images/project1.png" alt="Project 1 screenshot" /> -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            Project screenshot
-          </div>
-          <div class="project-body">
-            <div class="project-title">🚀 Featured Project Title</div>
-            <p class="project-desc">
-              A short (2–3 sentence) description of what this project does, the problem it solves,
-              and why it's interesting. Replace this with your actual project description.
-            </p>
-            <div class="project-footer">
-              <div class="project-stack">
-                <span class="tag">React</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">PostgreSQL</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                  Live
-                </a>
-                <a href="#" class="project-link" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                  Code
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card reveal delay-1">
-          <div class="project-img">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-          </div>
-          <div class="project-body">
-            <div class="project-title">Project Two</div>
-            <p class="project-desc">Short description of this project — what it does and the tech involved. Keep it to 2–3 sentences.</p>
-            <div class="project-footer">
-              <div class="project-stack">
-                <span class="tag">Python</span>
-                <span class="tag">FastAPI</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link" target="_blank" rel="noopener">Live</a>
-                <a href="#" class="project-link" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card reveal delay-2">
-          <div class="project-img">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-          </div>
-          <div class="project-body">
-            <div class="project-title">Project Three</div>
-            <p class="project-desc">Short description of this project — what it does and the tech involved. Keep it to 2–3 sentences.</p>
-            <div class="project-footer">
-              <div class="project-stack">
-                <span class="tag">TypeScript</span>
-                <span class="tag">AWS</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link" target="_blank" rel="noopener">Live</a>
-                <a href="#" class="project-link" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       CONTACT
-       ============================================================ -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="contact-inner">
-
-        <p class="section-label reveal">Say hello</p>
-        <h2 class="section-title reveal delay-1">Let's <span>work together</span></h2>
-        <p class="section-subtitle reveal delay-2">
-          <!-- TODO: Update copy to match your situation -->
-          Whether you have a project in mind, a question, or just want to connect —
-          my inbox is always open.
+          Open to senior DevOps, Platform Engineering, and SRE roles —
+          or just a good conversation about infrastructure and tooling.
+          My inbox is always open.
         </p>
 
-        <!-- TODO: Replace with your real email address -->
-        <a href="mailto:your@email.com" class="contact-email reveal delay-2">
+        <a href="mailto:scottwhom@gmail.com" class="contact-email-link reveal delay-3">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
-          your@email.com
+          scottwhom@gmail.com
         </a>
 
-        <!-- Social links — TODO: replace # with real URLs -->
-        <div class="contact-socials reveal delay-3">
+        <div class="contact-links reveal delay-4">
 
-          <a href="https://github.com/Schom975-coder" target="_blank" rel="noopener" class="social-link">
-            <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="GitHub">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-            </svg>
-            GitHub
-          </a>
-
-          <!-- TODO: Replace # with your LinkedIn URL -->
-          <a href="#" target="_blank" rel="noopener" class="social-link">
-            <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="LinkedIn">
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/scottwhom/" target="_blank" rel="noopener" class="contact-link-item">
+            <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
             LinkedIn
+            <span class="cli-label">linkedin.com/in/scottwhom</span>
           </a>
 
-          <!-- TODO: Replace # with your Twitter/X URL, or remove this block -->
-          <a href="#" target="_blank" rel="noopener" class="social-link">
-            <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Twitter / X">
-              <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+          <!-- GitHub -->
+          <a href="https://github.com/Schom975-coder" target="_blank" rel="noopener" class="contact-link-item">
+            <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
             </svg>
-            Twitter / X
+            GitHub
+            <span class="cli-label">github.com/Schom975-coder</span>
+          </a>
+
+          <!-- Resume PDF -->
+          <a href="assets/resume.pdf" target="_blank" rel="noopener" class="contact-link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            Download Résumé
+            <span class="cli-label">PDF · 2026</span>
           </a>
 
         </div>
+      </div><!-- /contact-left -->
 
-        <p class="contact-note reveal delay-4">
-          <!-- TODO: Update response time / add résumé link -->
-          I typically respond within 1–2 business days. You can also
-          <a href="assets/resume.pdf" style="color: var(--blue-light);">download my résumé (PDF)</a>.
-        </p>
-
+      <!-- Right: terminal card -->
+      <div class="contact-terminal reveal delay-2">
+        <div class="terminal-window">
+          <div class="term-titlebar">
+            <span class="term-dot r"></span>
+            <span class="term-dot y"></span>
+            <span class="term-dot g"></span>
+            <span class="term-tab">contact.sh</span>
+          </div>
+          <div class="term-body" style="height:auto; min-height:220px;">
+            <div class="term-line term-cmd">
+              <span class="term-prompt">
+                <span class="tp-user">schom</span><span class="tp-at">@</span><span class="tp-host">devbox</span><span class="tp-sep">:~$</span>
+              </span>&nbsp;<span class="term-typed">cat contact.md</span>
+            </div>
+            <div class="term-line term-out" style="margin-top:6px; color:var(--text-1); font-weight:600;">## Let's Connect</div>
+            <div class="term-line term-out" style="margin-top:4px;"><span style="color:var(--green)">→</span> scottwhom@gmail.com</div>
+            <div class="term-line term-out"><span style="color:var(--green)">→</span> linkedin.com/in/scottwhom</div>
+            <div class="term-line term-out"><span style="color:var(--green)">→</span> github.com/Schom975-coder</div>
+            <div class="term-line term-out" style="margin-top:8px; color:var(--text-3)">## Based in</div>
+            <div class="term-line term-out"><span style="color:var(--cyan)">Jersey City, NJ · New York area</span></div>
+            <div class="term-line term-out" style="margin-top:8px; color:var(--text-3)">## Response time</div>
+            <div class="term-line term-out"><span style="color:var(--blue-light)">Typically within 1–2 business days</span></div>
+            <div class="term-line term-cmd" style="margin-top:10px;">
+              <span class="term-prompt">
+                <span class="tp-user">schom</span><span class="tp-at">@</span><span class="tp-host">devbox</span><span class="tp-sep">:~$</span>
+              </span>&nbsp;<span class="term-cursor">▊</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+
+    </div><!-- /contact-layout -->
+  </div>
+</section>
 
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
-  <footer id="footer">
-    Built by <span>Scott Hom</span> · <span id="year"></span> ·
-    <a href="https://github.com/Schom975-coder/Schom975-coder.github.io" target="_blank" rel="noopener" style="color: inherit;">View source</a>
-  </footer>
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <span class="accent">$ </span>echo "Built by <span class="accent">Scott Hom</span> · &copy;&nbsp;<span id="year"></span> · <a href="https://github.com/Schom975-coder/Schom975-coder.github.io" target="_blank" rel="noopener">View source on GitHub</a>"
+</footer>
 
 
-  <!-- ── Scripts (deferred — loads after HTML is parsed) ──── -->
-  <script src="assets/js/main.js" defer></script>
+<!-- ── JS (deferred — parses after HTML) ────────────────── -->
+<script src="assets/js/main.js" defer></script>
 
 </body>
 </html>
