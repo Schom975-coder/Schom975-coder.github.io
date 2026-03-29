@@ -1539,7 +1539,8 @@ body::after {
 
   /* About */
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
-  .about-photo { max-width: 300px; margin: 10px auto 0; aspect-ratio: 1/1; }
+  .about-photo { max-width: 300px; margin: 0 auto; aspect-ratio: 1/1; }
+  .about-photo img { object-position: 50% 58%; }
 
   /* Skills */
   .skills-grid { grid-template-columns: 1fr; }
