@@ -592,6 +592,7 @@ ul { list-style: none; }
   font-weight: 500;
 }
 .hero-title .sep { color: var(--text-3); }
+.hero-title .location { color: var(--text-3); }
 
 .hero-bio {
   font-size: 1rem;
