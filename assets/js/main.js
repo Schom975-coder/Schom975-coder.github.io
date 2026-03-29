@@ -320,6 +320,103 @@ function initNav() {
 
 
 /* ═══════════════════════════════════════════════════════════
+   6. SCROLL PROGRESS BAR
+   Thin bar at the top showing how far down the page you've scrolled.
+   ═══════════════════════════════════════════════════════════ */
+function initScrollProgress() {
+  const bar = $('#scroll-progress');
+  if (!bar) return;
+  const update = () => {
+    const scrolled = window.scrollY;
+    const total    = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = total > 0 ? (scrolled / total * 100) + '%' : '0%';
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   7. 3D TERMINAL TILT
+   Subtle perspective tilt on the hero terminal as the mouse moves.
+   ═══════════════════════════════════════════════════════════ */
+function initTerminalTilt() {
+  const terminal = $('.hero-terminal');
+  if (!terminal) return;
+
+  const MAX_TILT = 8; /* degrees */
+
+  const hero = $('#hero');
+  if (!hero) return;
+
+  hero.addEventListener('mousemove', e => {
+    const rect   = terminal.getBoundingClientRect();
+    /* Use viewport-relative mouse position mapped to [-1, 1] */
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) / (window.innerWidth  / 2);
+    const dy = (e.clientY - cy) / (window.innerHeight / 2);
+    const rx =  dy * MAX_TILT * -1; /* tilt up/down  */
+    const ry =  dx * MAX_TILT;      /* tilt left/right */
+    terminal.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(0)`;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    terminal.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)';
+  });
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   8. CURSOR TRAIL
+   Subtle blue dot trail following the mouse for extra flair.
+   ═══════════════════════════════════════════════════════════ */
+function initCursorTrail() {
+  /* Only on non-touch devices */
+  if (window.matchMedia('(hover: none)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const TRAIL_LEN = 10;
+  const dots = [];
+
+  for (let i = 0; i < TRAIL_LEN; i++) {
+    const d = document.createElement('div');
+    d.style.cssText = `
+      position:fixed; pointer-events:none; z-index:9999;
+      width:${4 + i * 0.6}px; height:${4 + i * 0.6}px;
+      border-radius:50%;
+      background: rgba(79,125,243,${0.55 - i * 0.045});
+      transform:translate(-50%,-50%);
+      transition: opacity 0.15s;
+      will-change: transform;
+    `;
+    document.body.appendChild(d);
+    dots.push({ el: d, x: -100, y: -100 });
+  }
+
+  let mouse = { x: -100, y: -100 };
+
+  window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX; mouse.y = e.clientY;
+  }, { passive: true });
+
+  const step = () => {
+    let px = mouse.x, py = mouse.y;
+    dots.forEach((dot, i) => {
+      const lag = 1 - i * 0.06;
+      dot.x += (px - dot.x) * lag;
+      dot.y += (py - dot.y) * lag;
+      dot.el.style.left = dot.x + 'px';
+      dot.el.style.top  = dot.y + 'px';
+      px = dot.x; py = dot.y;
+    });
+    raf(step);
+  };
+  raf(step);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
    INIT
    ═══════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -331,5 +428,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initCounters();
   initNav();
+  initScrollProgress();
+  initTerminalTilt();
+  initCursorTrail();
   runTerminal(); /* async — fires & forgets */
 });

@@ -32,6 +32,8 @@
 
 <body>
 
+<div id="scroll-progress" aria-hidden="true"></div>
+
 <!-- ============================================================
      NAVIGATION
      ============================================================ -->
@@ -40,7 +42,7 @@
   <!-- Logo: terminal prompt style -->
   <a href="#hero" class="nav-logo" aria-label="Scott Hom home">
     <span class="prompt">$</span>&nbsp;
-    <span class="name">schom</span>
+    <span class="name">Scott Hom</span>
     <span class="cursor">▊</span>
   </a>
 
@@ -164,10 +166,9 @@
 
       <!-- Photo (replace the placeholder div with <img> when ready) -->
       <div class="about-photo reveal">
-        <!-- ↓↓ SWAP THIS FOR YOUR PHOTO ↓↓
-             <img src="assets/images/profile.jpg" alt="Scott Hom" />
-        -->
-        <div class="photo-placeholder-inner">
+        <img src="assets/images/profile.jpg" alt="Scott Hom"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="photo-placeholder-inner" style="display:none">
           <div class="photo-monogram">SH</div>
           <div class="photo-hint">// photo coming soon</div>
         </div>
@@ -237,6 +238,7 @@
   <div class="container">
 
     <div class="section-header">
+      <span class="section-num" aria-hidden="true">01</span>
       <span class="section-label reveal">cat stack.yaml</span>
       <h2 class="section-title reveal delay-1">Skills &amp; <span>Tech Stack</span></h2>
       <p class="section-subtitle reveal delay-2">
@@ -390,6 +392,7 @@
   <div class="container">
 
     <div class="section-header">
+      <span class="section-num" aria-hidden="true">02</span>
       <span class="section-label reveal">git log --oneline</span>
       <h2 class="section-title reveal delay-1">Work <span>Experience</span></h2>
     </div>
@@ -519,6 +522,7 @@
   <div class="container">
 
     <div class="section-header">
+      <span class="section-num" aria-hidden="true">03</span>
       <span class="section-label reveal">ls ~/projects/</span>
       <h2 class="section-title reveal delay-1">Work <span>Highlights</span></h2>
       <p class="section-subtitle reveal delay-2">
@@ -707,6 +711,7 @@
   <div class="container">
 
     <div class="section-header">
+      <span class="section-num" aria-hidden="true">04</span>
       <span class="section-label reveal">ls ~/certifications/</span>
       <h2 class="section-title reveal delay-1"><span>Certifications</span> &amp; Credentials</h2>
     </div>
@@ -733,8 +738,18 @@
         </div>
       </div>
 
-      <!-- ServiceNow SA -->
+      <!-- HashiCorp Terraform -->
       <div class="cert-card reveal delay-2">
+        <div class="cert-badge tf">🟪</div>
+        <div class="cert-info">
+          <div class="cert-name">HashiCorp Certified: Terraform Associate (003)</div>
+          <div class="cert-issuer">HashiCorp</div>
+          <span class="cert-status cert-new">Earned Feb 2026</span>
+        </div>
+      </div>
+
+      <!-- ServiceNow SA -->
+      <div class="cert-card reveal delay-3">
         <div class="cert-badge snow">🔧</div>
         <div class="cert-info">
           <div class="cert-name">ServiceNow Certified System Administrator</div>
@@ -744,7 +759,7 @@
       </div>
 
       <!-- ServiceNow IS -->
-      <div class="cert-card reveal delay-3">
+      <div class="cert-card reveal">
         <div class="cert-badge snow">⚡</div>
         <div class="cert-info">
           <div class="cert-name">ServiceNow Implementation Specialist</div>
@@ -765,6 +780,7 @@
   <div class="container">
 
     <div class="section-header">
+      <span class="section-num" aria-hidden="true">05</span>
       <span class="section-label reveal">cat education.md</span>
       <h2 class="section-title reveal delay-1">Education &amp; <span>Background</span></h2>
     </div>

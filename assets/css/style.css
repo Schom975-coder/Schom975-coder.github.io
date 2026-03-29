@@ -571,7 +571,12 @@ ul { list-style: none; }
   line-height: 1.05;
   margin-bottom: 14px;
 }
-.hero-name .accent { color: var(--blue-light); }
+.hero-name .accent {
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .hero-title {
   font-family: var(--font-mono);
@@ -656,7 +661,7 @@ ul { list-style: none; }
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(79,125,243,0.25);
   background: var(--bg-card);
   aspect-ratio: 4/5;
   display: flex;
@@ -664,12 +669,20 @@ ul { list-style: none; }
   justify-content: center;
   flex-direction: column;
   gap: 14px;
+  animation: photo-glow-pulse 4s ease-in-out infinite;
+  box-shadow: 0 0 0 1px rgba(79,125,243,0.1);
+}
+@keyframes photo-glow-pulse {
+  0%,100% { box-shadow: 0 0 24px rgba(79,125,243,0.12), 0 0 60px rgba(79,125,243,0.04); border-color: rgba(79,125,243,0.25); }
+  50%     { box-shadow: 0 0 36px rgba(0,212,255,0.22), 0 0 90px rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.4); }
 }
 .about-photo::before {
   content: '';
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 35% 65%, rgba(79,125,243,0.07) 0%, transparent 55%);
+  z-index: 1;
+  pointer-events: none;
 }
 /* Corner accents */
 .about-photo::after {
@@ -1128,9 +1141,21 @@ ul { list-style: none; }
   flex-shrink: 0;
   border: 1px solid var(--border);
 }
-.cert-badge.aws { background: rgba(255,153,0,0.1); border-color: rgba(255,153,0,0.25); }
-.cert-badge.k8s { background: rgba(50,108,229,0.1); border-color: rgba(50,108,229,0.25); }
-.cert-badge.snow { background: rgba(10,170,130,0.1); border-color: rgba(10,170,130,0.25); }
+.cert-badge.aws  { background: rgba(255,153,0,0.1);   border-color: rgba(255,153,0,0.25); }
+.cert-badge.k8s  { background: rgba(50,108,229,0.1);  border-color: rgba(50,108,229,0.25); }
+.cert-badge.snow { background: rgba(10,170,130,0.1);  border-color: rgba(10,170,130,0.25); }
+.cert-badge.tf   { background: rgba(126,74,227,0.12); border-color: rgba(126,74,227,0.3); }
+
+.cert-status.cert-new {
+  background: rgba(126,74,227,0.12);
+  border-color: rgba(126,74,227,0.35);
+  color: #b084f5;
+  animation: cert-new-glow 2.5s ease-in-out infinite;
+}
+@keyframes cert-new-glow {
+  0%,100% { box-shadow: 0 0 6px rgba(126,74,227,0.2); }
+  50%     { box-shadow: 0 0 14px rgba(126,74,227,0.45); }
+}
 
 .cert-info { flex: 1; }
 .cert-name {
@@ -1349,6 +1374,152 @@ ul { list-style: none; }
 .ad-3 { animation-delay: 0.56s; }
 .ad-4 { animation-delay: 0.74s; }
 .ad-5 { animation-delay: 0.92s; }
+
+
+/* ─────────────────────────────────────────────
+   19. EXTRA FLAIR — Visual polish & wow factor
+   ───────────────────────────────────────────── */
+
+/* ── Scroll progress bar (top of page) ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--green), var(--blue), var(--cyan));
+  z-index: 200;
+  box-shadow: 0 0 10px rgba(79,125,243,0.6);
+  transition: width 0.06s linear;
+}
+
+/* ── Noise / grain texture over the entire page ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ── Section ghost number behind headings ── */
+.section-num {
+  position: absolute;
+  top: -28px; left: -8px;
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 10vw, 7.5rem);
+  font-weight: 900;
+  color: rgba(79,125,243,0.045);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
+  z-index: 0;
+}
+.section-header {
+  position: relative;  /* already set, reinforcing */
+}
+
+/* ── Terminal window 3D tilt on mouse move ── */
+.hero-terminal .terminal-window {
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ── Button primary: light shimmer sweep on hover ── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+.btn-primary:hover::before { left: 160%; }
+
+/* ── Featured project card: subtle pulsing border glow ── */
+.project-card.full-width {
+  animation: feat-card-pulse 4s ease-in-out infinite;
+}
+@keyframes feat-card-pulse {
+  0%,100% { border-color: rgba(79,125,243,0.3);  box-shadow: 0 0 20px rgba(79,125,243,0.06); }
+  50%     { border-color: rgba(0,212,255,0.42);   box-shadow: 0 0 48px rgba(0,212,255,0.12), 0 0 80px rgba(0,212,255,0.04); }
+}
+.project-card.full-width:hover { animation: none; } /* stop pulse on hover so hover shadow takes over */
+
+/* ── Skill tags: glow on hover ── */
+.tag { transition: background var(--t), border-color var(--t), box-shadow var(--t), color var(--t); }
+.tag:hover {
+  background: rgba(79,125,243,0.22);
+  border-color: rgba(79,125,243,0.55);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(79,125,243,0.25);
+  cursor: default;
+}
+
+/* ── Timeline first dot: expanding pulse ring ── */
+.timeline-item:first-child::after {
+  content: '';
+  position: absolute;
+  left: -44px; top: 4px;
+  width: 17px; height: 17px;
+  border: 1.5px solid var(--blue);
+  border-radius: 50%;
+  animation: tl-ring 2.2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes tl-ring {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── Cert badge: bounce on hover ── */
+.cert-badge { transition: transform 0.2s ease; }
+.cert-card:hover .cert-badge { transform: scale(1.1) rotate(-4deg); }
+
+/* ── Contact link: slide-right arrow ── */
+.contact-link-item {
+  position: relative;
+  overflow: hidden;
+}
+.contact-link-item .cli-arrow {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity var(--t), transform var(--t);
+  margin-left: auto;
+  color: var(--blue-light);
+}
+.contact-link-item:hover .cli-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Pipe step icons: lift on card hover ── */
+.project-card:hover .pipe-icon {
+  transform: translateY(-3px);
+  transition: transform 0.25s ease, border-color var(--t), box-shadow var(--t);
+}
+.pipe-icon { transition: transform 0.25s ease; }
+
+/* ── Education card: glow on hover ── */
+.edu-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(79,125,243,0.08);
+}
+
+/* ── Stat numbers: glow effect ── */
+.stat-num {
+  text-shadow: 0 0 20px rgba(79,125,243,0.3);
+}
 
 
 /* ─────────────────────────────────────────────
