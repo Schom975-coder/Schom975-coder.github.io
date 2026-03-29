@@ -1,0 +1,61 @@
+# ============================================================
+# GitHub Actions — Deploy to GitHub Pages
+#
+# Triggers on every push to `main`.
+# Since this is a pure static site (no build step needed),
+# the workflow simply uploads the repo root and deploys it.
+#
+# Required one-time setup in GitHub:
+#   Repo Settings → Pages → Source → GitHub Actions
+# ============================================================
+
+name: Deploy to GitHub Pages
+
+on:
+  # Auto-deploy on every push to main
+  push:
+    branches:
+      - main
+  # Also allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+# Grant the workflow permission to deploy to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only allow one deployment at a time; don't cancel in-progress runs
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Configure GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 3. Upload the entire repo root as the Pages artifact
+      #    If you later add a build step (e.g. Vite/Next), change
+      #    `path` to your build output directory (e.g. `./dist`)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      # 4. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
