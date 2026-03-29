@@ -194,13 +194,13 @@ async function runTerminal() {
   await blank();
 
   await typeCmd('uptime');
-  await out('7+ years in Site Reliability Engineering & DevOps', 'out-cyan');
+  await out('7+ years in DevOps w/ 2+ years of Site Reliability Engineering experience', 'out-cyan');
   await blank();
 
   await typeCmd('ls ~/certifications/');
   await out('aws-solutions-architect-associate.cert',      'out-green');
   await out('certified-kubernetes-administrator.cert',     'out-green');
-  await out('hashicorp-terraform-associate-003.cert',      'out-green');
+  await out('hashicorp-terraform-associate-004.cert',      'out-green');
   await out('servicenow-system-administrator.cert',        'out-green');
   await out('servicenow-implementation-specialist.cert',   'out-green');
   await blank();
